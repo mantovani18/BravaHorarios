@@ -1,0 +1,470 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0a1f3f;
+    color: #e0e0e0;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #ff1493 0%, #ff69b4 25%, #87ceeb 75%, #00bfff 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.logo {
+    font-size: 3rem;
+    background: rgba(255, 255, 255, 0.3);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 8px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-top: 0.5rem;
+}
+
+/* Container Principal */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Controles */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background: #0f2a4d;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.date-picker {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.date-picker label {
+    font-weight: 600;
+    color: #e0e0e0;
+}
+
+.date-picker input {
+    padding: 0.5rem 1rem;
+    border: 2px solid #ff1493;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #1a3a5c;
+    color: #e0e0e0;
+}
+
+.date-picker input:focus {
+    outline: none;
+    border-color: #00bfff;
+    box-shadow: 0 0 8px rgba(0, 191, 255, 0.3);
+}
+
+.legend {
+    display: flex;
+    gap: 2rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.status-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+.status-box.disponivel {
+    background: linear-gradient(135deg, #00ff00, #00cc00);
+}
+
+.status-box.reservado {
+    background: linear-gradient(135deg, #ff4444, #ff0000);
+}
+
+/* Grid de Quadras */
+.quadras-container {
+    margin-bottom: 2rem;
+}
+
+.quadras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+/* Card Quadra */
+.quadra-card {
+    background: #0f2a4d;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quadra-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 20, 147, 0.2);
+}
+
+.quadra-header {
+    background: linear-gradient(135deg, #ff1493 0%, #87ceeb 100%);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.horarios-grid {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 0.6rem;
+}
+
+.horario-slot {
+    padding: 1rem;
+    border: 2px solid #1a3a5c;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #1a3a5c;
+    color: #e0e0e0;
+}
+
+.horario-slot.disponivel {
+    border-color: #00cc00;
+    background: rgba(0, 204, 0, 0.15);
+    color: #00ff00;
+}
+
+.horario-slot.disponivel:hover {
+    background: linear-gradient(135deg, #00ff00, #00cc00);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 204, 0, 0.3);
+}
+
+.horario-slot.reservado {
+    border-color: #ff4444;
+    background: rgba(255, 68, 68, 0.15);
+    color: #ff6666;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: #0f2a4d;
+    margin: 10% auto;
+    padding: 2rem;
+    border: none;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #ff1493;
+}
+
+#modalTitle {
+    color: #ff1493;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+/* Formulário */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #e0e0e0;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #1a3a5c;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    background-color: #1a3a5c;
+    color: #e0e0e0;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #ff1493;
+    box-shadow: 0 0 8px rgba(255, 20, 147, 0.2);
+}
+
+.form-group span {
+    font-weight: 700;
+    color: #ff1493;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Botões */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 120px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ff1493 0%, #87ceeb 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 6px 16px rgba(255, 20, 147, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #1a3a5c;
+    color: #e0e0e0;
+}
+
+.btn-secondary:hover {
+    background: #2a4a6d;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ff4444, #ff0000);
+    color: white;
+}
+
+.btn-danger:hover {
+    box-shadow: 0 6px 16px rgba(255, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Resumo de Reservas */
+.resumo {
+    background: #0f2a4d;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.resumo h2 {
+    color: #ff1493;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.resumo-lista {
+    display: grid;
+    gap: 1rem;
+}
+
+.resumo-item {
+    background: rgba(255, 20, 147, 0.1);
+    padding: 1.5rem;
+    border-left: 4px solid #ff1493;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.resumo-info h3 {
+    color: #ff1493;
+    margin-bottom: 0.5rem;
+}
+
+.resumo-info p {
+    color: #b0b0b0;
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+}
+
+.resumo-acoes {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    min-width: auto;
+}
+
+.vazio {
+    text-align: center;
+    color: #666;
+    padding: 2rem;
+    font-style: italic;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #ff1493 0%, #87ceeb 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .date-picker {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .quadras-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .logo-section {
+        flex-direction: column;
+    }
+
+    .horarios-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        min-width: auto;
+    }
+}
